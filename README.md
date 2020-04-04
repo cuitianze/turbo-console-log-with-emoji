@@ -5,8 +5,10 @@
 This extension make debugging much easier by automating the operation of writing meaningful log message.
 
 ## Features
-
 ---
+
+Random emoji prefix support:
+![alt text](https://raw.githubusercontent.com/cuitianze/turbo-console-log-with-emoji/master/docs/turbo-console-with-emoji.gif "Random emoji support")
 
 I) Insert meaningful log message automatically
 
