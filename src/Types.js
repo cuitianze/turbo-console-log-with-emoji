@@ -5,7 +5,7 @@ const vscode = require("vscode");
 export type JSBlockType = "class" | "function";
 
 export type LogMessage = {
-  spaces: string,
+  spaces?: string,
   lines: vscode.Range[]
 };
 

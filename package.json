@@ -1,9 +1,9 @@
 {
-  "name": "turbo-console-log",
-  "displayName": "Turbo Console Log",
+  "name": "turbo-console-log-with-emoji",
+  "displayName": "Turbo Console Log With Emoji",
   "description": "Automating the process of writing meaningful log messages.",
-  "version": "1.4.0",
-  "publisher": "ChakrounAnas",
+  "version": "1.0.0",
+  "publisher": "cuitianze",
   "engines": {
     "vscode": "^1.19.0"
   },
@@ -12,43 +12,48 @@
   ],
   "icon": "images/icon.png",
   "activationEvents": [
-    "onCommand:turboConsoleLog.displayLogMessage",
-    "onCommand:turboConsoleLog.commentAllLogMessages",
-    "onCommand:turboConsoleLog.uncommentAllLogMessages",
-    "onCommand:turboConsoleLog.deleteAllLogMessages"
+    "onCommand:turboConsoleLogWithEmoji.displayLogMessage",
+    "onCommand:turboConsoleLogWithEmoji.commentAllLogMessages",
+    "onCommand:turboConsoleLogWithEmoji.uncommentAllLogMessages",
+    "onCommand:turboConsoleLogWithEmoji.deleteAllLogMessages"
   ],
   "main": "./build/turboConsoleLog",
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Turbo Console Log Configuration",
+      "title": "Turbo Console Log With Emoji Configuration",
       "properties": {
-        "turboConsoleLog.wrapLogMessage": {
+        "turboConsoleLogWithEmoji.wrapLogMessage": {
           "type": "boolean",
           "default": false,
           "description": "Determine if the log message should be wrapped or not."
         },
-        "turboConsoleLog.logMessagePrefix": {
+        "turboConsoleLogWithEmoji.logMessagePrefix": {
           "type": "string",
           "default": "",
           "description": "The prefix of the log message."
         },
-        "turboConsoleLog.addSemicolonInTheEnd": {
+        "turboConsoleLogWithEmoji.randomEmojiPrefix": {
+          "type": "boolean",
+          "default": true,
+          "description": "Generate the random emoji prefix."
+        },
+        "turboConsoleLogWithEmoji.addSemicolonInTheEnd": {
           "type": "boolean",
           "default": false,
           "description": "Whether to add or not a semicolon in the end of the log message."
         },
-        "turboConsoleLog.insertEnclosingClass": {
+        "turboConsoleLogWithEmoji.insertEnclosingClass": {
           "type": "boolean",
           "default": true,
           "description": "Whether to insert or not the enclosing class of the selected variable in the log message."
         },
-        "turboConsoleLog.insertEnclosingFunction": {
+        "turboConsoleLogWithEmoji.insertEnclosingFunction": {
           "type": "boolean",
           "default": true,
           "description": "Whether to insert or not the enclosing function of the selected variable in the log message."
         },
-        "turboConsoleLog.quote": {
+        "turboConsoleLogWithEmoji.quote": {
           "type": "string",
           "enum": [
             "\"",
@@ -62,40 +67,40 @@
     },
     "commands": [
       {
-        "command": "turboConsoleLog.displayLogMessage",
-        "title": "Turbo Console Log: Display Log Message"
+        "command": "turboConsoleLogWithEmoji.displayLogMessage",
+        "title": "Turbo Console Log With Emoji: Display Log Message"
       },
       {
-        "command": "turboConsoleLog.commentAllLogMessages",
-        "title": "Turbo Console Log: Comment All Log Messages"
+        "command": "turboConsoleLogWithEmoji.commentAllLogMessages",
+        "title": "Turbo Console Log With Emoji: Comment All Log Messages"
       },
       {
-        "command": "turboConsoleLog.uncommentAllLogMessages",
-        "title": "Turbo Console Log: Uncomment All Log Messages"
+        "command": "turboConsoleLogWithEmoji.uncommentAllLogMessages",
+        "title": "Turbo Console Log With Emoji: Uncomment All Log Messages"
       },
       {
-        "command": "turboConsoleLog.deleteAllLogMessages",
-        "title": "Turbo Console Log: Delete All Log Messages"
+        "command": "turboConsoleLogWithEmoji.deleteAllLogMessages",
+        "title": "Turbo Console Log With Emoji: Delete All Log Messages"
       }
     ],
     "keybindings": [
       {
-        "command": "turboConsoleLog.displayLogMessage",
+        "command": "turboConsoleLogWithEmoji.displayLogMessage",
         "key": "ctrl+alt+l",
         "mac": "ctrl+alt+l"
       },
       {
-        "command": "turboConsoleLog.commentAllLogMessages",
+        "command": "turboConsoleLogWithEmoji.commentAllLogMessages",
         "key": "alt+shift+c",
         "mac": "alt+shift+c"
       },
       {
-        "command": "turboConsoleLog.uncommentAllLogMessages",
+        "command": "turboConsoleLogWithEmoji.uncommentAllLogMessages",
         "key": "alt+shift+u",
         "mac": "alt+shift+u"
       },
       {
-        "command": "turboConsoleLog.deleteAllLogMessages",
+        "command": "turboConsoleLogWithEmoji.deleteAllLogMessages",
         "key": "alt+shift+d",
         "mac": "alt+shift+d"
       }
@@ -113,6 +118,7 @@
     "@babel/preset-flow": "^7.8.3",
     "@types/node": "^7.0.43",
     "babel-eslint": "^10.0.3",
+    "babel-preset-minify": "^0.5.1",
     "chai": "^4.2.0",
     "eslint": "^5.12.1",
     "eslint-config-google": "^0.11.0",
@@ -137,11 +143,14 @@
   },
   "license": "SEE LICENSE IN LICENSE.txt",
   "bugs": {
-    "url": "https://github.com/Chakroun-Anas/turbo-console-log/issues",
-    "email": "chakroun.anas@outlook.com"
+    "url": "https://github.com/cuitianze/turbo-console-log-with-emoji/issues",
+    "email": "cuitianze123@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chakroun-Anas/turbo-console-log"
+    "url": "https://github.com/cuitianze/turbo-console-log-with-emoji"
+  },
+  "dependencies": {
+    "node-emoji": "^1.10.0"
   }
 }

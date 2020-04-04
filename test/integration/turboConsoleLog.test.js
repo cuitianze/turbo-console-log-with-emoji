@@ -9,7 +9,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const it = mocha.it;
 
-describe("Turbo Console Log", () => {
+describe("Turbo Console Log With Emoji", () => {
   before(async () => {
     vscode.window.showInformationMessage("Running integration tests");
   });
@@ -29,7 +29,7 @@ describe("Turbo Console Log", () => {
       )
     ];
     await vscode.commands.executeCommand(
-      "turboConsoleLog.displayLogMessage",
+      "turboConsoleLogWithEmoji.displayLogMessage",
       []
     );
     const textDocument = activeTextEditor.document;
@@ -46,7 +46,7 @@ describe("Turbo Console Log", () => {
       )
     ];
     await vscode.commands.executeCommand(
-      "turboConsoleLog.displayLogMessage",
+      "turboConsoleLogWithEmoji.displayLogMessage",
       []
     );
     const textDocument = activeTextEditor.document;
@@ -63,7 +63,7 @@ describe("Turbo Console Log", () => {
       )
     ];
     await vscode.commands.executeCommand(
-      "turboConsoleLog.displayLogMessage",
+      "turboConsoleLogWithEmoji.displayLogMessage",
       []
     );
     const textDocument = activeTextEditor.document;
@@ -83,7 +83,7 @@ describe("Turbo Console Log", () => {
         )
       ];
       await vscode.commands.executeCommand(
-        "turboConsoleLog.displayLogMessage",
+        "turboConsoleLogWithEmoji.displayLogMessage",
         []
       );
       const textDocument = activeTextEditor.document;
@@ -107,7 +107,7 @@ describe("Turbo Console Log", () => {
         )
       ];
       await vscode.commands.executeCommand(
-        "turboConsoleLog.displayLogMessage",
+        "turboConsoleLogWithEmoji.displayLogMessage",
         []
       );
       const textDocument = activeTextEditor.document;
@@ -131,7 +131,7 @@ describe("Turbo Console Log", () => {
         )
       ];
       await vscode.commands.executeCommand(
-        "turboConsoleLog.displayLogMessage",
+        "turboConsoleLogWithEmoji.displayLogMessage",
         []
       );
       const textDocument = activeTextEditor.document;

@@ -28,17 +28,19 @@ Multiple cursor support:
 
 Properties:
 
-- turboConsoleLog.wrapLogMessage (boolean): Whether to wrap the log message or not.
+- turboConsoleLogWithEmoji.wrapLogMessage (boolean): Whether to wrap the log message or not.
 
-- turboConsoleLog.logMessagePrefix (string): The prefix of the log message.
+- turboConsoleLogWithEmoji.logMessagePrefix (string): The prefix of the log message.
 
-- turboConsoleLog.addSemicolonInTheEnd (boolean): Whether to put a semicolon in the end of the log message or not.
+- turboConsoleLogWithEmoji.randomEmojiPrefix (boolean): Generate the random emoji prefix.
 
-- turboConsoleLog.insertEnclosingClass (boolean): Whether to insert or not the enclosing class of the selected variable in the log message.
+- turboConsoleLogWithEmoji.addSemicolonInTheEnd (boolean): Whether to put a semicolon in the end of the log message or not.
 
-- turboConsoleLog.insertEnclosingFunction (boolean): Whether to insert or not the enclosing function of the selected variable in the log message.
+- turboConsoleLogWithEmoji.insertEnclosingClass (boolean): Whether to insert or not the enclosing class of the selected variable in the log message.
 
-- turboConsoleLog.quote (enum): Double quotes (""), single quotes ('') or backtick(``).
+- turboConsoleLogWithEmoji.insertEnclosingFunction (boolean): Whether to insert or not the enclosing function of the selected variable in the log message.
+
+- turboConsoleLogWithEmoji.quote (enum): Double quotes (""), single quotes ('') or backtick(``).
 
 A wrapped log message :
 
@@ -92,19 +94,19 @@ Initial release of Turbo Console Log
 
 ---
 
-You're more than welcome to participate in the development of the extension by creating pull requests and submitting issues, link of the project in github: https://github.com/Chakroun-Anas/turbo-console-log
+You're more than welcome to participate in the development of the extension by creating pull requests and submitting issues, link of the project in github: https://github.com/Chakroun-Anas/turbo-console-log, or the emoji version https://github.com/cuitianze/turbo-console-log-with-emoji
 
 ## Contact
 
 ---
 
-You can contact me on the following mail: chakroun.anas@outlook.com
+You can contact me on the following mail: chakroun.anas@outlook.com, or the emoji version author cuitianze123@gmail.com
 
 ## License
 
 ---
 
-MIT &copy; Chakroun Anas
+MIT &copy; Chakroun Anas && CuiTianze
 
 ---
 

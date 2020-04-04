@@ -1,6 +1,7 @@
 // @flow
 
 const vscode = require("vscode");
+const emoji = require("node-emoji");
 const logMessage = require("./logMessage");
 import type { LogMessage, ExtensionProperties } from "./Types";
 
@@ -10,7 +11,7 @@ import type { LogMessage, ExtensionProperties } from "./Types";
  */
 function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand(
-    "turboConsoleLog.displayLogMessage",
+    "turboConsoleLogWithEmoji.displayLogMessage",
     async () => {
       const editor: vscode.TextEditor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -19,7 +20,7 @@ function activate(context: vscode.ExtensionContext) {
       const tabSize: number = editor.options.tabSize;
       const document: vscode.TextDocument = editor.document;
       const config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(
-        "turboConsoleLog"
+        "turboConsoleLogWithEmoji"
       );
       const properties: ExtensionProperties = extensionProperties(config);
       for (let index = 0; index < editor.selections.length; index++) {
@@ -60,7 +61,7 @@ function activate(context: vscode.ExtensionContext) {
     }
   );
   vscode.commands.registerCommand(
-    "turboConsoleLog.commentAllLogMessages",
+    "turboConsoleLogWithEmoji.commentAllLogMessages",
     () => {
       const editor: vscode.TextEditor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -69,7 +70,7 @@ function activate(context: vscode.ExtensionContext) {
       const tabSize: number = editor.options.tabSize;
       const document: vscode.TextDocument = editor.document;
       const config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(
-        "turboConsoleLog"
+        "turboConsoleLogWithEmoji"
       );
       const properties: ExtensionProperties = extensionProperties(config);
       const logMessages: LogMessage[] = logMessage.detectAll(
@@ -92,7 +93,7 @@ function activate(context: vscode.ExtensionContext) {
     }
   );
   vscode.commands.registerCommand(
-    "turboConsoleLog.uncommentAllLogMessages",
+    "turboConsoleLogWithEmoji.uncommentAllLogMessages",
     () => {
       const editor: vscode.TextEditor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -101,7 +102,7 @@ function activate(context: vscode.ExtensionContext) {
       const tabSize: number = editor.options.tabSize;
       const document: vscode.TextDocument = editor.document;
       const config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(
-        "turboConsoleLog"
+        "turboConsoleLogWithEmoji"
       );
       const properties: ExtensionProperties = extensionProperties(config);
       const logMessages: LogMessage[] = logMessage.detectAll(
@@ -126,7 +127,7 @@ function activate(context: vscode.ExtensionContext) {
     }
   );
   vscode.commands.registerCommand(
-    "turboConsoleLog.deleteAllLogMessages",
+    "turboConsoleLogWithEmoji.deleteAllLogMessages",
     () => {
       const editor: vscode.TextEditor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -135,7 +136,7 @@ function activate(context: vscode.ExtensionContext) {
       const tabSize: number = editor.options.tabSize;
       const document: vscode.TextDocument = editor.document;
       const config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(
-        "turboConsoleLog"
+        "turboConsoleLogWithEmoji"
       );
       const properties: ExtensionProperties = extensionProperties(config);
       const logMessages: LogMessage[] = logMessage.detectAll(
@@ -154,6 +155,21 @@ function activate(context: vscode.ExtensionContext) {
   );
 }
 
+function setLogMessagePrefix(
+  logMessagePrefix: String,
+  randomEmojiPrefix: Boolean
+) {
+  const prefix = [];
+  if (randomEmojiPrefix) {
+    prefix.push(emoji.random().emoji);
+  }
+  if (logMessagePrefix) {
+    prefix.push(logMessagePrefix);
+  }
+
+  return prefix.length ? prefix.join(" ") : "";
+}
+
 // TODO: Fix flow issues later
 function extensionProperties(
   workspaceConfig: vscode.WorkspaceConfiguration
@@ -162,11 +178,12 @@ function extensionProperties(
   // $FlowFixMe
   extensionProperties.wrapLogMessage = workspaceConfig.wrapLogMessage || false;
   // $FlowFixMe
-  extensionProperties.logMessagePrefix =
+  extensionProperties.logMessagePrefix = setLogMessagePrefix(
     // $FlowFixMe
-    workspaceConfig.logMessagePrefix && workspaceConfig.logMessagePrefix
-      ? workspaceConfig.logMessagePrefix
-      : "";
+    workspaceConfig.logMessagePrefix,
+    // $FlowFixMe
+    workspaceConfig.randomEmojiPrefix
+  );
   // $FlowFixMe
   extensionProperties.addSemicolonInTheEnd =
     // $FlowFixMe
