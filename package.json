@@ -2,7 +2,7 @@
   "name": "turbo-console-log-with-emoji",
   "displayName": "Turbo Console Log With Emoji",
   "description": "Automating the process of writing meaningful log messages.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "cuitianze",
   "engines": {
     "vscode": "^1.19.0"
