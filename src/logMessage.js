@@ -1,6 +1,7 @@
 // @flow
 
 const vscode = require("vscode");
+const chroma = require("chroma-js");
 const lineCodeProcessing = require("./lineCodeProcessing");
 import type { JSBlockType, LogMessage } from "./Types";
 
@@ -18,6 +19,8 @@ function message(
   addSemicolonInTheEnd: boolean,
   insertEnclosingClass: boolean,
   insertEnclosingFunction: boolean,
+  makeLogColorful: boolean,
+  logMessageFontSize: number,
   tabSize: number
 ): string {
   const classThatEncloseTheVar: string = enclosingBlockName(
@@ -37,11 +40,38 @@ function message(
   );
   const spacesBeforeMsg: string = spaces(document, lineOfSelectedVar, tabSize);
   const semicolon: string = addSemicolonInTheEnd ? ";" : "";
-  const debuggingMsg: string = `console.log(${quote}${logMessagePrefix}${
-    logMessagePrefix.length !== 0 ? ": " : ""
-  }${insertEnclosingClass ? classThatEncloseTheVar : ""}${
-    insertEnclosingFunction ? funcThatEncloseTheVar : ""
-  }${selectedVar}${quote}, ${selectedVar})${semicolon}`;
+
+  let makeLogColorfulSettings = {
+    key: "",
+    value: "",
+    space: ""
+  };
+  if (makeLogColorful) {
+    const bgColor = chroma.random().hex();
+    const textColor = chroma(bgColor).luminance() > 0.5 ? "black" : "white";
+    makeLogColorfulSettings = {
+      key: "%c ",
+      value: `${quote}font-size:${logMessageFontSize}px;background-color:${bgColor};color:${textColor};${quote}, `,
+      space: " "
+    };
+  }
+
+  const debuggingMsg: string = [
+    "console.log(",
+    `${quote}`,
+    `${makeLogColorfulSettings.key}`,
+    `${logMessagePrefix}`,
+    `${logMessagePrefix.length !== 0 ? ": " : ""}`,
+    `${insertEnclosingClass ? classThatEncloseTheVar : ""}`,
+    `${insertEnclosingFunction ? funcThatEncloseTheVar : ""}`,
+    `${selectedVar}`,
+    `${makeLogColorfulSettings.space}`,
+    `${quote}, `,
+    `${makeLogColorfulSettings.value}`,
+    `${selectedVar}`,
+    `)${semicolon}`
+  ].join("");
+
   if (wrapLogMessage) {
     // 16 represents the length of console.log("");
     const wrappingMsg: string = `console.log(${quote}${logMessagePrefix}: ${"-".repeat(

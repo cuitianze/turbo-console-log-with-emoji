@@ -52,6 +52,8 @@ function activate(context: vscode.ExtensionContext) {
                 properties.addSemicolonInTheEnd,
                 properties.insertEnclosingClass,
                 properties.insertEnclosingFunction,
+                properties.makeLogColorful,
+                properties.logMessageFontSize,
                 tabSize
               )
             );
@@ -198,6 +200,12 @@ function extensionProperties(
     workspaceConfig.insertEnclosingFunction || true;
   // $FlowFixMe
   extensionProperties.quote = workspaceConfig.quote || '"';
+  // $FlowFixMe
+  extensionProperties.makeLogColorful = workspaceConfig.makeLogColorful || true;
+  // $FlowFixMe
+  extensionProperties.logMessageFontSize =
+    // $FlowFixMe
+    workspaceConfig.logMessageFontSize || 16;
   return extensionProperties;
 }
 
