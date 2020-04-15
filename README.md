@@ -4,6 +4,8 @@
 
 This extension make debugging much easier by automating the operation of writing meaningful log message.
 
+marketplace link: [https://marketplace.visualstudio.com/items?itemName=cuitianze.turbo-console-log-with-emoji](https://marketplace.visualstudio.com/items?itemName=cuitianze.turbo-console-log-with-emoji)
+
 ## Features
 ---
 
